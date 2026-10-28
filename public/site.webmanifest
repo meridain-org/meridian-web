@@ -1,0 +1,16 @@
+{
+  "name": "Meridian Logistics",
+  "short_name": "Meridian",
+  "description": "Connecting businesses to global markets through considered freight forwarding and logistics coordination.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#03172a",
+  "theme_color": "#f46a16",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
