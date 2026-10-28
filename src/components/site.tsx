@@ -154,27 +154,27 @@ export function Footer({ settings }: { settings?: StoreSettings | null }) {
         <div className="footer-col">
           <h3>Get in touch</h3>
           {settings?.phone_1 || settings?.email ? (
-            <div className="space-y-1.5 mb-2 text-xs text-[#aab9c5]">
+            <div className="space-y-2 mb-2.5 text-sm text-[#aab9c5]">
               {settings.phone_1?.trim() && (
                 <p>
-                  <a href={`tel:${settings.phone_1.replace(/\s+/g, '')}`} className="inline-flex items-center gap-1.5 hover:text-white transition">
-                    <Phone size={12} className="text-orange" />
+                  <a href={`tel:${settings.phone_1.replace(/\s+/g, '')}`} className="inline-flex items-center gap-2 hover:text-white transition">
+                    <Phone size={14} className="text-orange shrink-0" />
                     <span>{settings.phone_1.trim()}</span>
                   </a>
                 </p>
               )}
               {settings.phone_2?.trim() && (
                 <p>
-                  <a href={`tel:${settings.phone_2.replace(/\s+/g, '')}`} className="inline-flex items-center gap-1.5 hover:text-white transition">
-                    <Phone size={12} className="text-orange" />
+                  <a href={`tel:${settings.phone_2.replace(/\s+/g, '')}`} className="inline-flex items-center gap-2 hover:text-white transition">
+                    <Phone size={14} className="text-orange shrink-0" />
                     <span>{settings.phone_2.trim()}</span>
                   </a>
                 </p>
               )}
               {settings.email?.trim() && (
                 <p>
-                  <a href={`mailto:${settings.email.trim()}`} className="inline-flex items-center gap-1.5 hover:text-white transition">
-                    <Mail size={12} className="text-orange" />
+                  <a href={`mailto:${settings.email.trim()}`} className="inline-flex items-center gap-2 hover:text-white transition">
+                    <Mail size={14} className="text-orange shrink-0" />
                     <span>{settings.email.trim()}</span>
                   </a>
                 </p>
@@ -183,7 +183,7 @@ export function Footer({ settings }: { settings?: StoreSettings | null }) {
           ) : (
             <p className="muted">Saudi Arabia<br/>Serving international markets</p>
           )}
-          <Link className="footer-cta" href="/contact">Contact our team <ArrowRight size={14}/></Link>
+          <Link className="footer-cta" href="/contact">Contact our team <ArrowRight size={15}/></Link>
           <Link href="/request-a-quote">Request a Quote</Link>
         </div>
       </div>
