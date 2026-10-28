@@ -129,7 +129,7 @@ export function ClientLogosManager() {
               Upload Client Logo
             </h2>
             <p className="text-xs text-slate-500 mt-0.5">
-              Select an image to upload directly to Cloudinary. It will instantly appear in the homepage infinite auto-scroll carousel.
+              Drag &amp; drop a logo file, paste an image from clipboard (Ctrl+V), or browse to upload. It will instantly appear in the homepage infinite auto-scroll carousel.
             </p>
           </div>
           <button
@@ -141,9 +141,18 @@ export function ClientLogosManager() {
           </button>
         </div>
 
-        {/* Cloudinary Direct Uploader */}
+        {/* Cloudinary Direct Uploader with Drag & Drop and Copy-Paste */}
         <div className="max-w-xl mx-auto">
-          <CloudinaryUploader onUploaded={handleUploaded} />
+          <CloudinaryUploader
+            title="Upload Client Logo"
+            subtitle="Drag & drop logo file, paste image (Ctrl+V), or click to browse"
+            onUploaded={handleUploaded}
+            onPasteUrl={(url) => {
+              setUrlInput(url);
+              setShowUrlField(true);
+              setNotice(`Pasted logo URL: ${url}. Click "Add" or press Enter to save.`);
+            }}
+          />
         </div>
 
         {/* Optional Manual URL Input */}
