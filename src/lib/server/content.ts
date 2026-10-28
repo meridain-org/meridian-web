@@ -147,3 +147,56 @@ export async function getClientLogos(): Promise<import("@/data/clients").ClientL
     return defaultClientLogos;
   }
 }
+
+export async function getAboutSettings(): Promise<import("@/data/about").AboutSettings> {
+  const { defaultAboutSettings } = await import("@/data/about");
+  const db = database();
+  if (!db) return defaultAboutSettings;
+  try {
+    const { data, error } = await db.from("site_settings").select("value").eq("key", "public.about_page").maybeSingle();
+    if (error || !data?.value || typeof data.value !== "object" || Array.isArray(data.value)) {
+      return defaultAboutSettings;
+    }
+    const val = data.value as Record<string, unknown>;
+    return {
+      heroEyebrow: text(val.heroEyebrow) || defaultAboutSettings.heroEyebrow,
+      heroTitle: text(val.heroTitle) || defaultAboutSettings.heroTitle,
+      heroDescription: text(val.heroDescription) || defaultAboutSettings.heroDescription,
+      heroImage: imageSource(val.heroImage) || text(val.heroImage) || defaultAboutSettings.heroImage,
+
+      storyEyebrow: text(val.storyEyebrow) || defaultAboutSettings.storyEyebrow,
+      storyTitle: text(val.storyTitle) || defaultAboutSettings.storyTitle,
+      storyParagraph1: text(val.storyParagraph1) || defaultAboutSettings.storyParagraph1,
+      storyParagraph2: text(val.storyParagraph2) || defaultAboutSettings.storyParagraph2,
+      storyImage: imageSource(val.storyImage) || text(val.storyImage) || defaultAboutSettings.storyImage,
+      storyBadgeNumber: text(val.storyBadgeNumber) || defaultAboutSettings.storyBadgeNumber,
+      storyBadgeLabel: text(val.storyBadgeLabel) || defaultAboutSettings.storyBadgeLabel,
+
+      stat1Value: text(val.stat1Value) || defaultAboutSettings.stat1Value,
+      stat1Label: text(val.stat1Label) || defaultAboutSettings.stat1Label,
+      stat2Value: text(val.stat2Value) || defaultAboutSettings.stat2Value,
+      stat2Label: text(val.stat2Label) || defaultAboutSettings.stat2Label,
+      stat3Value: text(val.stat3Value) || defaultAboutSettings.stat3Value,
+      stat3Label: text(val.stat3Label) || defaultAboutSettings.stat3Label,
+      stat4Value: text(val.stat4Value) || defaultAboutSettings.stat4Value,
+      stat4Label: text(val.stat4Label) || defaultAboutSettings.stat4Label,
+
+      missionTitle: text(val.missionTitle) || defaultAboutSettings.missionTitle,
+      missionDescription: text(val.missionDescription) || defaultAboutSettings.missionDescription,
+      visionTitle: text(val.visionTitle) || defaultAboutSettings.visionTitle,
+      visionDescription: text(val.visionDescription) || defaultAboutSettings.visionDescription,
+      valuesTitle: text(val.valuesTitle) || defaultAboutSettings.valuesTitle,
+      valuesDescription: text(val.valuesDescription) || defaultAboutSettings.valuesDescription,
+
+      strengths: stringList(val.strengths).length > 0 ? stringList(val.strengths) : defaultAboutSettings.strengths,
+
+      ctaTitle: text(val.ctaTitle) || defaultAboutSettings.ctaTitle,
+      ctaDescription: text(val.ctaDescription) || defaultAboutSettings.ctaDescription,
+      ctaBtnText: text(val.ctaBtnText) || defaultAboutSettings.ctaBtnText,
+      ctaBtnHref: text(val.ctaBtnHref) || defaultAboutSettings.ctaBtnHref,
+    };
+  } catch {
+    return defaultAboutSettings;
+  }
+}
+

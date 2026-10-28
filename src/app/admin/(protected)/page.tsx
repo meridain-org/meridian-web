@@ -11,6 +11,7 @@ import {
   Home,
   Images,
   Inbox,
+  Info,
   Lightbulb,
   Mail,
   MoreHorizontal,
@@ -250,6 +251,7 @@ export default async function AdminDashboard() {
   const quickActions = [
     { label: "Add New Service", href: "/admin/content/services", icon: Truck, iconBg: "bg-sky-50 text-sky-600" },
     { label: "Add New Industry", href: "/admin/content/industries", icon: Factory, iconBg: "bg-purple-50 text-purple-600" },
+    { label: "Manage About Us", href: "/admin/about", icon: Info, iconBg: "bg-emerald-50 text-emerald-600" },
     { label: "Manage Homepage", href: "/admin/site-copy", icon: Home, iconBg: "bg-orange-50 text-orange-600" },
     { label: "View Enquiries", href: "/admin/inquiries", icon: Mail, iconBg: "bg-amber-50 text-amber-600" },
   ];

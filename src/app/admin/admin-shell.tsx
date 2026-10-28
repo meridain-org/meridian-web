@@ -13,6 +13,7 @@ import {
   LogOut,
   Search,
   Building2,
+  Info,
   SlidersHorizontal,
   Truck,
   Type,
@@ -22,6 +23,7 @@ import { useState } from "react";
 const nav = [
   { label: "Overview", href: "/admin", icon: LayoutDashboard },
   { label: "Homepage", href: "/admin/site-copy", icon: Type },
+  { label: "About Us", href: "/admin/about", icon: Info },
   { label: "Client Logos", href: "/admin/clients", icon: Building2 },
   { label: "Store Settings", href: "/admin/settings", icon: SlidersHorizontal },
   { label: "Services", href: "/admin/content/services", icon: Truck },

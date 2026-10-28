@@ -1186,12 +1186,20 @@ export function SiteCopyManager() {
           {/* TAB 2: ABOUT */}
           {activeTab === "about" && (
             <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-2xs space-y-5">
-              <div className="border-b border-slate-100 pb-4">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#f46a16]">Section 02</span>
-                <h2 className="text-base font-bold text-slate-900">About Meridian</h2>
-                <p className="text-xs text-slate-500">
-                  Company introduction, key capability pillars, and collage badges.
-                </p>
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#f46a16]">Section 02</span>
+                  <h2 className="text-base font-bold text-slate-900">Homepage About Section</h2>
+                  <p className="text-xs text-slate-500">
+                    Company introduction, capability pillars, and 3-image collage for the homepage.
+                  </p>
+                </div>
+                <Link
+                  href="/admin/about"
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-orange/30 bg-orange/5 px-3 py-1.5 text-xs font-semibold text-[#f46a16] hover:bg-orange/10 transition"
+                >
+                  <Building2 size={13} /> Manage Dedicated /about Page
+                </Link>
               </div>
 
               <div className="space-y-4 text-xs">
