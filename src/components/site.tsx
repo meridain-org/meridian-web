@@ -203,8 +203,8 @@ export function Reveal({ children, className = "", delay = 0 }: { children: Reac
   return <motion.div className={className} initial={reduceMotion ? false : { opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: 0.62, delay, ease: [0.22, 1, 0.36, 1] }}>{children}</motion.div>;
 }
 
-export function ButtonLink({ href, children, kind = "orange", icon = true }: { href: string; children: ReactNode; kind?: "orange" | "outline" | "light"; icon?: boolean }) {
-  return <Link href={href} className={`button button-${kind}`}>{children}{icon && <ArrowRight size={16}/>}</Link>;
+export function ButtonLink({ href, children, kind = "orange", icon = true, className = "" }: { href: string; children: ReactNode; kind?: "orange" | "outline" | "light"; icon?: boolean; className?: string }) {
+  return <Link href={href} className={`button button-${kind} ${className}`.trim()}>{children}{icon && <ArrowRight size={16}/>}</Link>;
 }
 
 export function Eyebrow({ children, index }: { children: ReactNode; index?: string }) {

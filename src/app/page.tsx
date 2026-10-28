@@ -8,6 +8,7 @@ import { SeamlessHeroVideo } from "@/components/seamless-hero-video";
 import { AboutCollageInteractive } from "@/components/about-collage-interactive";
 import { Modern3DWorldMap } from "@/components/modern-3d-world-map";
 import { TrustedClients } from "@/components/trusted-clients";
+import { ServiceCardInteractive } from "@/components/service-card-interactive";
 import { getHomepageCopy, getIndustries, getServices, getSiteMedia, getClientLogos } from "@/lib/server/content";
 
 export const dynamic = "force-dynamic";
@@ -59,19 +60,72 @@ export default async function HomePage() {
       </div>
     </section>
 
-    <section className="about-home section-pad">
-      <div className="container about-grid">
+    <section className="about-home section-pad relative overflow-hidden bg-gradient-to-b from-white via-[#f8fafc] to-white border-b border-slate-100">
+      {/* Decorative subtle ambient lights */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-orange/[0.04] blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-40 left-0 h-96 w-96 rounded-full bg-[#041c32]/[0.03] blur-3xl"
+      />
+
+      <div className="container about-grid relative z-10">
         <Reveal className="about-copy">
-          <Eyebrow>{cleanEyebrow(copy.aboutEyebrow || "About Meridian")}</Eyebrow>
-          <h2>{copy.aboutTitle || "Strategic Logistics Management Built on Operational Precision"}</h2>
-          <p>{copy.aboutDescription || "Headquartered in Saudi Arabia, Meridian provides multi-modal freight forwarding, contract logistics, and project cargo coordination tailored to high-value industrial and commercial supply chains."}</p>
-          <ButtonLink href="/about">{copy.aboutBtn || "More About Us"}</ButtonLink>
-          <div className="about-highlights">
-            <div><ShieldCheck/><b>{copy.aboutHighlight1Title || "Reliable services"}</b><span>{copy.aboutHighlight1Subtitle || "Built around your needs"}</span></div>
-            <div><Globe2/><b>{copy.aboutHighlight2Title || "Global network"}</b><span>{copy.aboutHighlight2Subtitle || "Local expertise"}</span></div>
-            <div><Workflow/><b>{copy.aboutHighlight3Title || "Tailored solutions"}</b><span>{copy.aboutHighlight3Subtitle || "For your business"}</span></div>
+          <div className="inline-flex items-center gap-2 rounded-full border border-orange/20 bg-orange/5 px-3 py-1 mb-4 shadow-2xs">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#f46a16] animate-pulse" />
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#f46a16]">
+              {cleanEyebrow(copy.aboutEyebrow || "About Meridian")}
+            </span>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold tracking-tight text-[#061b31] leading-[1.16]">
+            {copy.aboutTitle || "Strategic Logistics Management Built on Operational Precision"}
+          </h2>
+
+          <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-600">
+            {copy.aboutDescription || "Headquartered in Saudi Arabia, Meridian provides multi-modal freight forwarding, contract logistics, and project cargo coordination tailored to high-value industrial and commercial supply chains."}
+          </p>
+
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <ButtonLink href="/about">{copy.aboutBtn || "More About Us"}</ButtonLink>
+          </div>
+
+          {/* Elevated Modern Capability Pillars */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-6 border-t border-slate-200/80">
+            <div className="group flex flex-col justify-between rounded-xl bg-white p-3.5 border border-slate-200/70 shadow-2xs transition-all duration-300 hover:border-orange/40 hover:shadow-md hover:-translate-y-0.5">
+              <div className="flex items-center gap-2.5">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-orange/10 text-[#f46a16] transition group-hover:bg-[#f46a16] group-hover:text-white">
+                  <ShieldCheck size={16} />
+                </span>
+                <b className="text-xs font-bold text-[#061b31]">{copy.aboutHighlight1Title || "Reliable services"}</b>
+              </div>
+              <span className="text-[11px] text-slate-500 mt-2 leading-relaxed">{copy.aboutHighlight1Subtitle || "Built around your needs"}</span>
+            </div>
+
+            <div className="group flex flex-col justify-between rounded-xl bg-white p-3.5 border border-slate-200/70 shadow-2xs transition-all duration-300 hover:border-sky-300 hover:shadow-md hover:-translate-y-0.5">
+              <div className="flex items-center gap-2.5">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-sky-50 text-sky-600 transition group-hover:bg-sky-600 group-hover:text-white">
+                  <Globe2 size={16} />
+                </span>
+                <b className="text-xs font-bold text-[#061b31]">{copy.aboutHighlight2Title || "Global network"}</b>
+              </div>
+              <span className="text-[11px] text-slate-500 mt-2 leading-relaxed">{copy.aboutHighlight2Subtitle || "Local expertise"}</span>
+            </div>
+
+            <div className="group flex flex-col justify-between rounded-xl bg-white p-3.5 border border-slate-200/70 shadow-2xs transition-all duration-300 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5">
+              <div className="flex items-center gap-2.5">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-emerald-50 text-emerald-600 transition group-hover:bg-emerald-600 group-hover:text-white">
+                  <Workflow size={16} />
+                </span>
+                <b className="text-xs font-bold text-[#061b31]">{copy.aboutHighlight3Title || "Tailored solutions"}</b>
+              </div>
+              <span className="text-[11px] text-slate-500 mt-2 leading-relaxed">{copy.aboutHighlight3Subtitle || "For your business"}</span>
+            </div>
           </div>
         </Reveal>
+
         <AboutCollageInteractive
           image1={copy.aboutImage1 || siteImage("home.about-main")}
           image2={copy.aboutImage2 || siteImage("home.about-side")}
@@ -84,45 +138,53 @@ export default async function HomePage() {
       </div>
     </section>
 
-    <section className="services-home section-pad dark-section">
-      <div className="container">
-        <div className="split-title">
-          <SectionTitle eyebrow="Our services" title="Our services" light />
-          <div className="split-title-aside">
-            <Link href="/services">
-              View all services <ArrowRight size={15} />
-            </Link>
+    <section className="services-home section-pad relative overflow-hidden bg-[#03172a] text-white">
+      {/* Ambient gradient backdrops */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 right-0 h-96 w-96 rounded-full bg-[#f46a16]/10 blur-3xl"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-40 left-0 h-96 w-96 rounded-full bg-sky-900/15 blur-3xl"
+      />
+
+      <div className="container relative z-10">
+        <div className="flex flex-wrap items-end justify-between gap-6 mb-10 pb-4 border-b border-white/10">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange/30 bg-orange/10 px-3 py-1 mb-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#f46a16] animate-pulse" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ff8a40]">
+                OUR CAPABILITIES
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold tracking-tight text-white leading-tight">
+              Integrated Global Freight & Logistics Solutions
+            </h2>
+            <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
+              Multi-modal transportation connecting the Kingdom of Saudi Arabia with major international trade gateways.
+            </p>
           </div>
+
+          <Link
+            href="/services"
+            className="group inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white backdrop-blur transition hover:bg-[#f46a16] hover:border-[#f46a16]"
+          >
+            <span>View All Services</span>
+            <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
+
         {services.length ? (
-          <div className="service-grid">
-            {services.slice(0, 5).map((item, i) => {
-              const Icon = icons[i];
-              return (
-                <Reveal key={item.slug} delay={i * 0.06}>
-                  <Link className="service-card" href={`/services/${item.slug}`}>
-                    <div className="card-image">
-                      {item.image && (
-                        <Image
-                          src={item.image}
-                          alt={`${item.title} logistics`}
-                          fill
-                          sizes="(max-width: 700px) 90vw, 20vw"
-                        />
-                      )}
-                      <span className="service-icon">
-                        <Icon size={17} />
-                      </span>
-                    </div>
-                    <div className="service-card-body">
-                      <h3>{item.title}</h3>
-                      <p>{item.short}</p>
-                      <CardArrow />
-                    </div>
-                  </Link>
-                </Reveal>
-              );
-            })}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+            {services.slice(0, 5).map((item, i) => (
+              <ServiceCardInteractive
+                key={item.slug}
+                service={item}
+                index={i}
+                variant="dark"
+              />
+            ))}
           </div>
         ) : (
           <ContentEmptyState
